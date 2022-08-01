@@ -187,24 +187,223 @@ console.log(foo.getdetails())
 // user.role = user.role === 'naive' && "User is Naive"
 
 
-let user = {
-    mon: {
-        start: 2,
-        end: 3
-    },
-    wed: {
-        start: 3,
-        end: 4
-    },
-    fri: {
-        start: 5,
-        end: 6
-    }
-}
+// let user = {
+//     mon: {
+//         start: 2,
+//         end: 3
+//     },
+//     wed: {
+//         start: 3,
+//         end: 4
+//     },
+//     fri: {
+//         start: 5,
+//         end: 6
+//     }
+// }
 
 
-// console.log(user.mon.start)
-if (user.session && user.session.tue) {
-    console.log(user.session.tue.start)
+// // console.log(user.mon.start)
+// if (user.session && user.session.tue) {
+//     console.log(user.session.tue.start)
+// }
+// console.log(user.session?.tue?.start)
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Spread
+
+// let numbers = [3, 4, 5];
+
+// let newNumbers = [1, 2, ...numbers];
+
+// console.log(newNumbers);            // [1,2,[3,4,5]]
+
+
+// function add(a, b, c) {
+//     return a + b + c;
+// }
+
+
+// console.log(add(...numbers))
+
+// let userOne = {
+//     email: "test@test.com"
+// }
+// let author = {
+//     book: "Wakeup"
+// }
+
+// let userTwo = {
+//     ...userOne,
+//     ...author
+// }
+
+// let userThree = userOne;
+
+// console.log(userTwo);
+// console.log(userThree);
+
+
+
+
+
+// REST
+
+// function addition(a,b,c,...args ) {
+//     console.log(args[0])            // ?
+// }
+
+// // addition(2, 4)
+// // addition(2, 4, 4, 6, 7)
+// addition(2, 4, 4, 6, 7, 42, 7, 2)
+
+
+
+
+
+
+// let friends = ["foo", "bar", "bam", "baz"];
+
+// let [f1, f2, ...myFriends] = friends;
+
+// console.log(myFriends)
+
+
+
+
+// DESTRUCTURING
+
+// let fruits = ["apple", "orange", "guava", "kiwi"]
+
+// let [f1, f2, f3, f4] = fruits;
+
+
+
+
+// let users = [
+//     { email: "test1@test.com", age: 32 },
+//     { email: "test2@test.com", age: 34 },
+//     { email: "test3@test.com", age: 36 },
+//     { email: "test4@test.com", age: 38 },
+// ]
+// // Deep copy
+// let [
+//     { email: e1, age: a1 },
+//     { email: e2, age: a2 },
+//     { email: e3, age: a3 },
+//     { email: e4, age: a4 }
+// ] = users;
+
+// // Shallow copy
+// let [u1, u2, u3, u4] = users;
+
+// u1.age = 40
+
+// console.log(users);
+
+// console.log(e1, e3, a2, a4);
+
+// f3 = "banana"
+
+// console.log(f3);
+// console.log(fruits[2])          // ?
+
+
+// let user = {
+//     firstName: "John",
+//     lastName: "Doe",
+//     age: 32,
+//     address: {
+//         city: "Hyd",
+//         street: "201 Main Road"
+//     }
+// }
+
+// let { firstName, lastName, age, address: { city, street } } = user;
+
+// console.log(firstName, age)
+
+// city = "MUM";
+
+// console.log(user.address)
+
+
+
+
+
+// let a = 10;
+// let b = 20;
+
+// // a = a+b
+// // b = a-b
+// // a= a-b
+
+// [b,a] = [a,b];
+
+
+
+// let user = {
+//     name: "Maria",
+//     friends: [
+//         { name: "john" },
+//         { name: "jenny" },
+//         { name: "james" },
+//     ]
+// }
+
+// let {
+//     name: username,
+//     friends: [
+//         { name: n1 },
+//         { name: n2 },
+//         { name: n3 },
+//     ]
+// } = user;
+
+
+// console.log(username, n1, n2, n3);
+
+
+
+
+// Map
+
+const user = { name: "Bar" };
+
+const newUser = {
+    user: "new user",
+    true: "isAdim",
+    123: "Code name"
 }
-console.log(user.session?.tue?.start)
+
+console.log(newUser)
+
+const map = new Map();
+
+map.set("username", "Foo");
+map.set(user, "user1")
+map.set(true, "isAdmin")
+map.set(["f1", "f2"], "friends")
+
+// console.log(map.get(user))
+// console.log(map.get(true))
+
+// console.log(map.has("username"))
+// console.log(map.delete("username123"))
+// console.log(map.clear())
+// console.log(map.has("username"))
+
+for (let key of map.keys()) {
+    console.log(key);
+}
