@@ -135,12 +135,76 @@ class Human {
 
 
 class Student extends Human {
-    constructor(studName, studId, studAge, course) {
+    constructor(studName, studId, studAge, course, marks) {
         super(studName, studAge)
         this.studId = studId;
         this.course = course;
+        this.marks = marks;
+    }
+
+    get studId() { }
+    set studId(val) {
+        // chance to validate student ID here
+    }
+
+    #calcGrade() {
+        return (this.marks * 900) / 1000
+    }
+
+    isFirstGrade() {
+        if (this.#calcGrade() > 90) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    // Overridding
+    getDetails() {
+
     }
 }
 
 let foo = new Student("Foo", "F001", 32, "Java");
 console.log(foo.getdetails())
+
+
+// Short Circuit Operators
+
+// let val = 0 || '' || "Hello World" || null;
+// let valTwo = 0 ?? '' ?? "Hello World" ?? null;
+// let valThree = "" && 0 && "Hello World";
+
+// console.log(val);
+// console.log(valTwo);
+// console.log(valThree);
+
+// Nullish Coalescing Operator -> ??
+
+// user.role === 'admin' ? "User is Admin" : "User is Naive";
+
+// user.role = user.role === 'admin' && "User is Admin"
+// user.role = user.role === 'naive' && "User is Naive"
+
+
+let user = {
+    mon: {
+        start: 2,
+        end: 3
+    },
+    wed: {
+        start: 3,
+        end: 4
+    },
+    fri: {
+        start: 5,
+        end: 6
+    }
+}
+
+
+// console.log(user.mon.start)
+if (user.session && user.session.tue) {
+    console.log(user.session.tue.start)
+}
+console.log(user.session?.tue?.start)
