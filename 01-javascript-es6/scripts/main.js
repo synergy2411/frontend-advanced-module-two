@@ -122,51 +122,51 @@
 
 
 
-class Human {
-    constructor(name, age) {
-        this.name = name;
-        this.age = age;
-    }
+// class Human {
+//     constructor(name, age) {
+//         this.name = name;
+//         this.age = age;
+//     }
 
-    getdetails() {
-        return `Hello from ${this.name}, I'm ${this.age} years old`
-    }
-}
+//     getdetails() {
+//         return `Hello from ${this.name}, I'm ${this.age} years old`
+//     }
+// }
 
 
-class Student extends Human {
-    constructor(studName, studId, studAge, course, marks) {
-        super(studName, studAge)
-        this.studId = studId;
-        this.course = course;
-        this.marks = marks;
-    }
+// class Student extends Human {
+//     constructor(studName, studId, studAge, course, marks) {
+//         super(studName, studAge)
+//         this.studId = studId;
+//         this.course = course;
+//         this.marks = marks;
+//     }
 
-    get studId() { }
-    set studId(val) {
-        // chance to validate student ID here
-    }
+//     get studId() { }
+//     set studId(val) {
+//         // chance to validate student ID here
+//     }
 
-    #calcGrade() {
-        return (this.marks * 900) / 1000
-    }
+//     #calcGrade() {
+//         return (this.marks * 900) / 1000
+//     }
 
-    isFirstGrade() {
-        if (this.#calcGrade() > 90) {
-            return true
-        } else {
-            return false
-        }
-    }
+//     isFirstGrade() {
+//         if (this.#calcGrade() > 90) {
+//             return true
+//         } else {
+//             return false
+//         }
+//     }
 
-    // Overridding
-    getDetails() {
+//     // Overridding
+//     getDetails() {
 
-    }
-}
+//     }
+// }
 
-let foo = new Student("Foo", "F001", 32, "Java");
-console.log(foo.getdetails())
+// let foo = new Student("Foo", "F001", 32, "Java");
+// console.log(foo.getdetails())
 
 
 // Short Circuit Operators
@@ -379,31 +379,93 @@ console.log(foo.getdetails())
 
 // Map
 
-const user = { name: "Bar" };
+// const user = { name: "Bar" };
 
-const newUser = {
-    user: "new user",
-    true: "isAdim",
-    123: "Code name"
-}
+// const newUser = {
+//     user: "new user",
+//     true: "isAdim",
+//     123: "Code name"
+// }
 
-console.log(newUser)
+// console.log(newUser)
 
-const map = new Map();
+// const map = new Map();
 
-map.set("username", "Foo");
-map.set(user, "user1")
-map.set(true, "isAdmin")
-map.set(["f1", "f2"], "friends")
+// map.set("username", "Foo");
+// map.set(user, "user1")
+// map.set(true, "isAdmin")
+// map.set(["f1", "f2"], "friends")
 
-// console.log(map.get(user))
-// console.log(map.get(true))
+// // console.log(map.get(user))
+// // console.log(map.get(true))
 
-// console.log(map.has("username"))
-// console.log(map.delete("username123"))
-// console.log(map.clear())
-// console.log(map.has("username"))
+// // console.log(map.has("username"))
+// // console.log(map.delete("username123"))
+// // console.log(map.clear())
+// // console.log(map.has("username"))
 
-for (let key of map.keys()) {
-    console.log(key);
-}
+// for (let key of map.keys()) {
+//     console.log(key);
+// }
+
+
+// Set
+
+// const user = { name: "john" }
+// const userTwo = { ...user };
+
+// const arr = [2, 4, 6];
+// const newArr = [...arr];
+
+// const set = new Set();
+
+// set.add("john")
+// set.add("jenny")
+// set.add("john")
+// set.add("james")
+// set.add("alice")
+// set.add(user)
+// set.add(userTwo)
+// set.add(arr)
+// set.add(newArr)
+// console.log(set.size);      // ?
+
+
+// console.log(new Array([1, 2, 3, 4]));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ES6 Module System
+
+// import { Student, getLuckyNumber, MAGIC_NUMBER } from "./student.js";
+// import * as myModule from "./student.js";
+// let john = new myModule.Student("S001", "John Doe")
+// console.log(john.getDetails());
+
+// console.log(myModule.getLuckyNumber());
+
+// console.log(myModule.MAGIC_NUMBER)
+
+
+
+
+// import Student from './student.js'
+import Person from './student.js'
