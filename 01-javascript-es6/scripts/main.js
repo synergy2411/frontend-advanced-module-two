@@ -468,4 +468,75 @@
 
 
 // import Student from './student.js'
-import Person from './student.js'
+// import Person from './student.js'
+
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     const heading = document.querySelector("h1");
+//     heading.textContent = "Changed Content";
+//     alert("Hello World")
+// })
+
+
+// console.log("Hello World");
+
+
+const btnFetch = document.querySelector("#btn-fetch")
+const ulContainer = document.querySelector(".user-lists")
+
+btnFetch.addEventListener("click", function () {
+    // console.log(this);          // button
+    const xhr = new XMLHttpRequest();
+    const url = `http://localhost:3000/users/u002`;
+    xhr.open("GET", url);
+    xhr.addEventListener("load", () => {
+        const user = JSON.parse(xhr.responseText);
+
+        console.log(user);
+        const postURL = "http://localhost:3000/posts";
+        const postXHR = new XMLHttpRequest()
+        postXHR.open("GET", postURL)
+        postXHR.addEventListener("load", function () {
+            const posts = JSON.parse(this.responseText);
+            const userPost = posts.filter(post => post.userId === user.id)
+            const postContainer = document.createElement("ul")
+            const h3 = document.createElement("h3")
+            h3.innerHTML = `${user.email} - ${user.age}`
+            userPost.forEach(post => {
+                const liEl = document.createElement("li");
+                liEl.classList.add("list-group-item")
+                liEl.innerHTML = `
+                <p>${post.title.toUpperCase()}</p>
+            `
+                postContainer.append(liEl)
+            })
+            document.body.appendChild(h3)
+            document.body.appendChild(postContainer)
+        })
+        postXHR.send()
+
+        // users.forEach((user) => {
+        //     const liEl = document.createElement("li");
+        //     liEl.classList.add("list-group-item")
+        //     liEl.innerHTML = `
+        //         <p>${user.email}  - ${user.age} </p>
+        //     `
+        //     ulContainer.append(liEl)
+        // })
+
+    })
+    xhr.send()
+    xhr.addEventListener("error", () => {
+        console.error("Something bad happened")
+    })
+
+    // const url = "http://localhost:3000/users"
+    // fetch(url)
+    //     .then(response => response.json())
+    //     .then(data => console.log(data))
+    //     .catch(err => console.log(err))
+
+})
+
+// json-server --watch data.json

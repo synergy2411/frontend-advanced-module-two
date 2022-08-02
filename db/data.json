@@ -1,0 +1,31 @@
+{
+  "users": [
+    {
+      "id": "u001",
+      "email": "john@test.com",
+      "age": "john123"
+    },
+    {
+      "id": "u002",
+      "email": "jenny@test.com",
+      "age": "jenny123"
+    }
+  ],
+  "posts": [
+    {
+      "id": "p001",
+      "title": "Awesome HTML",
+      "userId": "u001"
+    },
+    {
+      "id": "p002",
+      "title": "JavaScript is great",
+      "userId": "u002"
+    },
+    {
+      "id": "p003",
+      "title": "I Luv CSS",
+      "userId": "u002"
+    }
+  ]
+}
