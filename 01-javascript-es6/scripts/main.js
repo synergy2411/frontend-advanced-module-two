@@ -648,3 +648,10 @@ consumer()
 
 // consumer()
 
+
+
+navigator.geolocation
+    .getCurrentPosition(
+        position => console.log(position.coords),
+        err => console.log(err)
+    )
