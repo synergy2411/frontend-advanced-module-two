@@ -482,61 +482,169 @@
 // console.log("Hello World");
 
 
-const btnFetch = document.querySelector("#btn-fetch")
-const ulContainer = document.querySelector(".user-lists")
+// const btnFetch = document.querySelector("#btn-fetch")
+// const ulContainer = document.querySelector(".user-lists")
 
-btnFetch.addEventListener("click", function () {
-    // console.log(this);          // button
-    const xhr = new XMLHttpRequest();
-    const url = `http://localhost:3000/users/u002`;
-    xhr.open("GET", url);
-    xhr.addEventListener("load", () => {
-        const user = JSON.parse(xhr.responseText);
+// btnFetch.addEventListener("click", function () {
+//     // console.log(this);          // button
+//     const xhr = new XMLHttpRequest();
+//     const url = `http://localhost:3000/users/u002`;
+//     xhr.open("GET", url);
+//     xhr.addEventListener("load", () => {
+//         const user = JSON.parse(xhr.responseText);
 
-        console.log(user);
-        const postURL = "http://localhost:3000/posts";
-        const postXHR = new XMLHttpRequest()
-        postXHR.open("GET", postURL)
-        postXHR.addEventListener("load", function () {
-            const posts = JSON.parse(this.responseText);
-            const userPost = posts.filter(post => post.userId === user.id)
-            const postContainer = document.createElement("ul")
-            const h3 = document.createElement("h3")
-            h3.innerHTML = `${user.email} - ${user.age}`
-            userPost.forEach(post => {
-                const liEl = document.createElement("li");
-                liEl.classList.add("list-group-item")
-                liEl.innerHTML = `
-                <p>${post.title.toUpperCase()}</p>
-            `
-                postContainer.append(liEl)
-            })
-            document.body.appendChild(h3)
-            document.body.appendChild(postContainer)
-        })
-        postXHR.send()
+//         console.log(user);
+//         const postURL = "http://localhost:3000/posts";
+//         const postXHR = new XMLHttpRequest()
+//         postXHR.open("GET", postURL)
+//         postXHR.addEventListener("load", function () {
+//             const posts = JSON.parse(this.responseText);
+//             const userPost = posts.filter(post => post.userId === user.id)
+//             const postContainer = document.createElement("ul")
+//             const h3 = document.createElement("h3")
+//             h3.innerHTML = `${user.email} - ${user.age}`
+//             userPost.forEach(post => {
+//                 const liEl = document.createElement("li");
+//                 liEl.classList.add("list-group-item")
+//                 liEl.innerHTML = `
+//                 <p>${post.title.toUpperCase()}</p>
+//             `
+//                 postContainer.append(liEl)
+//             })
+//             document.body.appendChild(h3)
+//             document.body.appendChild(postContainer)
+//         })
+//         postXHR.send()
 
-        // users.forEach((user) => {
-        //     const liEl = document.createElement("li");
-        //     liEl.classList.add("list-group-item")
-        //     liEl.innerHTML = `
-        //         <p>${user.email}  - ${user.age} </p>
-        //     `
-        //     ulContainer.append(liEl)
-        // })
+//         // users.forEach((user) => {
+//         //     const liEl = document.createElement("li");
+//         //     liEl.classList.add("list-group-item")
+//         //     liEl.innerHTML = `
+//         //         <p>${user.email}  - ${user.age} </p>
+//         //     `
+//         //     ulContainer.append(liEl)
+//         // })
 
-    })
-    xhr.send()
-    xhr.addEventListener("error", () => {
-        console.error("Something bad happened")
-    })
+//     })
+//     xhr.send()
+//     xhr.addEventListener("error", () => {
+//         console.error("Something bad happened")
+//     })
 
-    // const url = "http://localhost:3000/users"
-    // fetch(url)
-    //     .then(response => response.json())
-    //     .then(data => console.log(data))
-    //     .catch(err => console.log(err))
+//     // const url = "http://localhost:3000/users"
+// fetch(url)
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err))
 
-})
+// })
 
 // json-server --watch data.json
+
+
+
+
+// Promise
+
+// Producer Code
+
+// const promiseProducer = () => {
+//     const promise = new Promise((resolve, reject) => {
+
+// fetch("http://localhost:3000/users")
+//     .then(response => {
+//         console.log("FETCH RESPONSE -> ", response)
+//         return response.json()
+//     }).then(result => {
+//         console.log("RESULT -> ", result)
+//         resolve(result)
+//     })
+//     .catch(err => reject(err))
+
+//         // setTimeout(() => {
+//         //     resolve({ message: "Resolved" })
+//         //     // reject(new Error("Something bad happened"))
+//         // }, 3000);
+//     });
+//     return promise;
+// }
+
+
+// // Consumer Code -
+// // - then().catch()
+// // - Async...await
+
+// const consumePromise = () => {
+//     promiseProducer()
+//         .then((response) => {
+//             // console.log("RESP -> ", response)
+//             return fetch("http://localhost:3000/posts")
+//         }).then(resp => {
+//             console.log("DATA : ", resp)
+//             return resp.json()
+//         }).then(posts => {
+//             console.log("POST -> ", posts);
+//             return posts.filter(p => p.userId === 'u002');
+//         }).then(userPost => {
+//             userPost.forEach(post => {
+//                 const liEl = document.createElement("li");
+//                 liEl.classList.add("list-group-item")
+//                 liEl.innerHTML = `
+//                                 <p>${post.title.toUpperCase()}</p>
+//                             `
+//                 document.body.append(liEl)
+//             })
+//         }).catch(err => console.error("CATCH BLOCK -> ", err))
+
+// }
+
+// consumePromise()
+
+
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// console.log(numbers.filter(num => num > 2).map(num => num * 2).find(n => n === 8));
+
+
+
+// Producer
+
+const producer = (ms) => {
+    return new Promise((resolve, reject) => {
+        if (ms > 2000) {
+            setTimeout(() => {
+                resolve("Here the promise resolve")
+            }, 2000)
+        } else {
+            reject("Too low value")
+        }
+    })
+}
+
+
+const consumer = async () => {
+    try {
+        const result = await producer(1999);
+        console.log("RESULT -> ", result)
+    } catch (err) {
+        console.error(err)
+    }
+}
+
+consumer()
+// Consumer
+
+// const consumer = () => {
+//     producer(1999)
+//         .then(response => {
+//             console.log(response);
+//             return "First Then - " + response;
+//         }).then(result => {
+//             console.log(result)
+//         })
+//         .catch(console.error)
+// }
+
+// consumer()
+
