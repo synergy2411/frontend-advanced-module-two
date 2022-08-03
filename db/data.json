@@ -1,22 +1,22 @@
 {
   "users": [
     {
-      "id": "u001",
-      "email": "john@test.com",
-      "age": "john123"
-    },
-    {
       "id": "u002",
       "email": "jenny@test.com",
-      "age": "jenny123"
+      "age": 32
+    },
+    {
+      "email": "new@test.com",
+      "age": 32,
+      "id": "-CF7pka"
+    },
+    {
+      "email": "fromFetch@test.com",
+      "age": 21,
+      "id": "1yQGkZc"
     }
   ],
   "posts": [
-    {
-      "id": "p001",
-      "title": "Awesome HTML",
-      "userId": "u001"
-    },
     {
       "id": "p002",
       "title": "JavaScript is great",
