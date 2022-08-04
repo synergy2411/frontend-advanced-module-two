@@ -119,25 +119,25 @@
         });
 
         $("#btnFetch").click(function () {
-          $.ajax({
-            method: "GET",
-            url: "https://jsonplaceholder.typicode.com/posts",
-            success: function (data) {
-              console.log(data);
-            },
-            error: function (err) {
-              console.log(err);
-            },
-          });
+          // $.ajax({
+          //   method: "GET",
+          //   url: "https://jsonplaceholder.typicode.com/posts",
+          //   success: function (data) {
+          //     console.log(data);
+          //   },
+          //   error: function (err) {
+          //     console.log(err);
+          //   },
+          // });
 
-          // $.get(
-          //   "https://jsonplaceholder.typicode.com/photos",
-          //   function (data, status, xhr) {
-          //     console.log("Data : ", data);
-          //     console.log("Status", status);
-          //     console.log("XHR : ", xhr);
-          //   }
-          // );
+          $.get(
+            "https://jsonplaceholder.typicode.com/photos",
+            function (data, status, xhr) {
+              console.log("Data : ", data);
+              console.log("Status", status);
+              console.log("XHR : ", xhr);
+            }
+          );
         });
 
         $("input[id=username]").on("focus", function () {
