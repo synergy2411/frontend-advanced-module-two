@@ -24,6 +24,9 @@
           <td>
             <input type="text" id="username" />
           </td>
+          <td>
+            <div id="message"></div>
+          </td>
         </tr>
         <!-- email -->
         <tr>
@@ -32,6 +35,9 @@
           </td>
           <td>
             <input type="text" id="email" />
+          </td>
+          <td>
+            <div id="emailMessage"></div>
           </td>
         </tr>
         <!-- status -->
@@ -86,6 +92,9 @@
       </table>
     </form>
 
+    <button type="button" id="btnFetch">Fetch</button>
+    <button type="button" id="btnCreate">Create</button>
+
     <div id="container"></div>
 
     <style>
@@ -96,6 +105,48 @@
 
     <script>
       $(document).ready(function () {
+        $("#btnCreate").on("click", function () {
+          $.post(
+            "https://jsonplaceholder.typicode.com/posts",
+            {
+              title: "t001",
+              body: "....",
+            },
+            function (data, status, xhr) {
+              console.log("Data : ", data);
+            }
+          );
+        });
+
+        $("#btnFetch").click(function () {
+          $.ajax({
+            method: "GET",
+            url: "https://jsonplaceholder.typicode.com/posts",
+            success: function (data) {
+              console.log(data);
+            },
+            error: function (err) {
+              console.log(err);
+            },
+          });
+
+          // $.get(
+          //   "https://jsonplaceholder.typicode.com/photos",
+          //   function (data, status, xhr) {
+          //     console.log("Data : ", data);
+          //     console.log("Status", status);
+          //     console.log("XHR : ", xhr);
+          //   }
+          // );
+        });
+
+        $("input[id=username]").on("focus", function () {
+          $("#message").load("partial.html #txtUsername");
+        });
+        $("input[id=email]").on("focus", function () {
+          $("#emailMessage").load("partial.html #txtEmail");
+        });
+
         let str = "";
         let hobbies = [];
         let preferredCountries = [];
