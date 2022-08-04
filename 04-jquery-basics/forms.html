@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started</title>
+
+    <script src="./vendors/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {});
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to Jquery</h1>
+    <form id="infoForm">
+      <table>
+        <!-- name -->
+        <tr>
+          <td>
+            <label for="username">Username : </label>
+          </td>
+          <td>
+            <input type="text" id="username" />
+          </td>
+        </tr>
+        <!-- email -->
+        <tr>
+          <td>
+            <label for="email">Email : </label>
+          </td>
+          <td>
+            <input type="text" id="email" />
+          </td>
+        </tr>
+        <!-- status -->
+        <tr>
+          <td>
+            <label for="gender">Status :</label>
+          </td>
+          <td>
+            <label for="married">Married</label>
+            <input type="radio" name="status" id="married" value="married" />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="single">Single</label>
+            <input type="radio" name="status" id="single" value="single" />
+          </td>
+        </tr>
+        <!-- hobbies -->
+        <tr>
+          <td><label for="hobbies">Hobbies :</label></td>
+          <td>
+            <label for="yoga">Yoga</label>
+            <input type="checkbox" name="yoga" id="yoga" />
+            &nbsp;&nbsp;&nbsp;
+            <label for="swimming">Swimming</label>
+            <input type="checkbox" name="swimming" id="swimming" />
+
+            &nbsp;&nbsp;&nbsp;
+            <label for="cricket">Cricket</label>
+            <input type="checkbox" name="cricket" id="cricket" />
+          </td>
+        </tr>
+        <!-- Preferred Country -->
+        <tr>
+          <td><label for="country">Preferred Country :</label></td>
+          <td>
+            <select name="country" id="country" multiple>
+              <option value="us">United States</option>
+              <option value="uk">United Kingdom</option>
+              <option value="aus">Australia</option>
+              <option value="chn">China</option>
+              <option value="uae">UAE</option>
+            </select>
+          </td>
+        </tr>
+        <!-- buttons -->
+        <tr>
+          <td></td>
+          <td>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <div id="container"></div>
+
+    <style>
+      .focused {
+        background: #abcdef;
+      }
+    </style>
+
+    <script>
+      $(document).ready(function () {
+        let str = "";
+        let hobbies = [];
+        let preferredCountries = [];
+
+        $("input:text").on("focus", function () {
+          $(this).css("background-color", "#abcdef");
+        });
+        $("input:text").on("blur", function () {
+          $(this).css("background-color", "#fff");
+        });
+
+        $("input:text").on("change", function () {
+          str += $(this).attr("id") + " = " + $(this).val() + "\n";
+        });
+
+        $("input:radio").on("change", function () {
+          str += $(this).attr("name") + " = " + $(this).val();
+        });
+
+        $("input:checkbox").on("change", function () {
+          hobbies.push($(this).attr("name"));
+        });
+
+        $("select").on("change", function () {
+          preferredCountries = [];
+          preferredCountries.push($(this).val());
+        });
+
+        $("button:submit").on("click", function (event) {
+          event.preventDefault();
+
+          $("#container").html(`
+          ${str}
+          <br/>
+          Hobbies : ${hobbies.join(",")}
+          <br/>
+          Preferred Countries : ${preferredCountries.join(",")}
+          
+          `);
+
+          console.log(str, hobbies, preferredCountries);
+        });
+      });
+    </script>
+  </body>
+</html>
