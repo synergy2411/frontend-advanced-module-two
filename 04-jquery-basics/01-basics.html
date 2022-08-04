@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Getting Started</title>
+
+    <script src="./vendors/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // $("#btn").mouseenter(function () {
+        //   console.log("Enter");
+        // });
+        // $("#btn").mouseleave(function () {
+        //   console.log("Leave");
+        // });
+        // $("#btn").on("click", function () {
+        //   console.log("Event handled");
+        // });
+        // $("#btn").click(function () {
+        //   console.log("Event handled");
+        // });
+        // $("#btn").on({
+        //   mouseenter: function () {
+        //     console.log("Entered");
+        //   },
+        //   mouseleave: function () {
+        //     console.log("Left");
+        //   },
+        // });
+        // $("#btn").on("click", function () {
+        //   $(this).css("background", "yellow");
+        // });
+
+        // $("ul")
+        //   .find("li")
+        //   .on("click", function () {
+        //     $(this).css("background", "blue");
+        //   });
+
+        function clickHandler() {
+          console.log(this);
+          $(this).unbind("click", clickHandler);
+        }
+
+        $("li").bind("click", clickHandler);
+        // $("ul").on("click", "li", clickHandler);
+
+        // $("ul").delegate("li", "click", function () {
+        //   $(this).css("background", "red");
+        // });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to Jquery</h1>
+    <button id="btn">Click</button>
+    <ul>
+      <li>Tea</li>
+      <li>Coffee</li>
+      <li>Milk</li>
+    </ul>
+  </body>
+</html>
