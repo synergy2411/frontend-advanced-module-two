@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regular Expression</title>
+  </head>
+  <body>
+    <script>
+      // let regexp = new RegExp(pattern,flag)
+
+      // let regexp2 = / /
+
+      let str = "I have no special talents. I am only passionately curious.";
+      let regexp = /I/gi;
+
+      console.log(regexp.test(str));
+
+      //   console.log(regexp.exec(str));
+
+      console.log(str.match(regexp));
+    </script>
+  </body>
+</html>
